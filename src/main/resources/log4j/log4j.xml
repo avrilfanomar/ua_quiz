@@ -17,7 +17,7 @@
 	</appender>
 
 	<appender name="fileAppender" class="org.apache.log4j.RollingFileAppender">
-		<param name="Threshold" value="INFO"/>
+		<param name="Threshold" value="WARN"/>
 		<param name="MaxFileSize" value="512KB"/>
 		<param name="MaxBackupIndex" value="10"/>
 		<param name="File" value="${webapp.root}/WEB-INF/logs/log4j.log"/>
@@ -28,27 +28,27 @@
 
 	<!--sets the priority log level for org.springframework-->
 	<logger name="org.springframework">
-		<level value="debug"/>
+		<level value="info"/>
 	</logger>
 
 	<logger name="org.hibernate.tool.hbm2ddl" additivity="false">
-		<level value="debug"/>
+		<level value="info"/>
 		<appender-ref ref="stdout"/>
 	</logger>
 
 	<logger name="org.hibernate.engine.jdbc.spi.SqlExceptionHelper" additivity="false">
-		<level value="debug"/>
+		<level value="info"/>
 		<appender-ref ref="stdout"/>
 	</logger>
 
 
 	<logger name="org.hibernate" additivity="false">
-		<level value="debug"/>
+		<level value="info"/>
 	</logger>
 
 	<!--sets the default priority log level-->
 	<root>
-		<priority value="debug"></priority>
+		<priority value="error"></priority>
 		<appender-ref ref="stdout"/>
 		<appender-ref ref="fileAppender"/>
 	</root>

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 /**
  * @author o_sshyik
  */
-@Table(name = "user", schema = "", catalog = "ua_quiz")
+@Table(name = "\"user\"")
 @Entity
 public class UserEntity {
 	private String name;

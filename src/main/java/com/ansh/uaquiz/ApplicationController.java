@@ -16,28 +16,32 @@ import java.util.Collection;
 
 @Controller
 public class ApplicationController {
-	@Autowired
-	private UserService userService;
+    @Autowired
+    private UserService userService;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(ModelMap map) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-			UserDetails userDetails =
-					(UserDetails) authentication.getPrincipal();
-			map.addAttribute("userDetails", userDetails);
-		}
-		return "index";
-	}
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String index(ModelMap map) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetails =
+                    (UserDetails) authentication.getPrincipal();
+            map.addAttribute("userDetails", userDetails);
+        }
+        return "index";
+    }
 
-	@PreAuthorize("hasRole('admin')")
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String admin(ModelMap map) {
-		UserDetails userDetails =
-				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Collection<? extends GrantedAuthority> securedMessage = userService.getAuthorities(userDetails);
-		map.addAttribute("userDetails", userDetails);
-		map.addAttribute("userAuthorities", securedMessage);
-		return "admin";
-	}
+    @PreAuthorize("hasRole('admin')")
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String admin(ModelMap map) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            UserDetails userDetails =
+                    (UserDetails) principal;
+            Collection<? extends GrantedAuthority> securedMessage = userService.getAuthorities(userDetails);
+            map.addAttribute("userDetails", userDetails);
+            map.addAttribute("userAuthorities", securedMessage);
+            return "admin";
+        }
+        return "index";
+    }
 }
