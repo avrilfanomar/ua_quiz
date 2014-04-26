@@ -1,7 +1,7 @@
-package com.ansh.uaquiz.auth;
+package ua.quiz.auth;
 
-import com.ansh.uaquiz.da.entity.UserEntity;
-import com.ansh.uaquiz.dao.UserDao;
+import ua.quiz.da.entity.UserEntity;
+import ua.quiz.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

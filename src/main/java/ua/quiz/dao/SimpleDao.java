@@ -1,4 +1,4 @@
-package com.ansh.uaquiz.dao;
+package ua.quiz.dao;
 
 import java.io.Serializable;
 

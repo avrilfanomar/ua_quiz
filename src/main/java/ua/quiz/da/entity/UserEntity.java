@@ -1,4 +1,4 @@
-package com.ansh.uaquiz.da.entity;
+package ua.quiz.da.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

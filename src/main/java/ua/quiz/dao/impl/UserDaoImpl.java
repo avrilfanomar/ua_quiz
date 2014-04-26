@@ -1,7 +1,7 @@
-package com.ansh.uaquiz.dao.impl;
+package ua.quiz.dao.impl;
 
-import com.ansh.uaquiz.da.entity.UserEntity;
-import com.ansh.uaquiz.dao.UserDao;
+import ua.quiz.da.entity.UserEntity;
+import ua.quiz.dao.UserDao;
 import org.springframework.stereotype.Repository;
 
 /**

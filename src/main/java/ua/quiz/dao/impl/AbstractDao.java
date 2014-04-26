@@ -1,6 +1,6 @@
-package com.ansh.uaquiz.dao.impl;
+package ua.quiz.dao.impl;
 
-import com.ansh.uaquiz.dao.SimpleDao;
+import ua.quiz.dao.SimpleDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 

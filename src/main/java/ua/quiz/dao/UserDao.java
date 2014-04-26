@@ -1,6 +1,6 @@
-package com.ansh.uaquiz.dao;
+package ua.quiz.dao;
 
-import com.ansh.uaquiz.da.entity.UserEntity;
+import ua.quiz.da.entity.UserEntity;
 
 /**
  * @author o_sshyik
