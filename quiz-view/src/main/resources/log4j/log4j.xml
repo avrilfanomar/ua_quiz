@@ -20,7 +20,7 @@
 		<param name="Threshold" value="WARN"/>
 		<param name="MaxFileSize" value="512KB"/>
 		<param name="MaxBackupIndex" value="10"/>
-		<param name="File" value="${webapp.root}/WEB-INF/logs/log4j.log"/>
+		<param name="File" value="${webapp.root}/WEB-INF/logs/quiz.log"/>
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d %-5p %c{1}:%L %m %n"/>
 		</layout>
