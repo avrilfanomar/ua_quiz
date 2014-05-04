@@ -1,5 +1,7 @@
 package ua.quiz;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -16,6 +18,8 @@ import java.util.Collection;
 
 @Controller
 public class ApplicationController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationController.class);
+
     @Autowired
     private UserService userService;
 
@@ -42,6 +46,7 @@ public class ApplicationController {
             map.addAttribute("userAuthorities", securedMessage);
             return "admin";
         }
+        LOGGER.debug("Not admin user came here");
         return "index";
     }
 }
