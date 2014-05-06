@@ -1,4 +1,4 @@
-package ua.quiz;
+package ua.quiz.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ua.quiz.UserService;
 
 import java.util.Collection;
 
@@ -38,15 +39,10 @@ public class ApplicationController {
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String admin(ModelMap map) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            UserDetails userDetails =
-                    (UserDetails) principal;
-            Collection<? extends GrantedAuthority> securedMessage = userService.getAuthorities(userDetails);
-            map.addAttribute("userDetails", userDetails);
-            map.addAttribute("userAuthorities", securedMessage);
-            return "admin";
-        }
-        LOGGER.debug("Not admin user came here");
-        return "index";
+        UserDetails userDetails =(UserDetails) principal;
+        Collection<? extends GrantedAuthority> securedMessage = userService.getAuthorities(userDetails);
+        map.addAttribute("userDetails", userDetails);
+        map.addAttribute("userAuthorities", securedMessage);
+        return "admin";
     }
 }

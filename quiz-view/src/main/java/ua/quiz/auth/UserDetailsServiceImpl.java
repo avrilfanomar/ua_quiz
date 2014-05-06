@@ -1,5 +1,6 @@
 package ua.quiz.auth;
 
+import org.springframework.transaction.annotation.Transactional;
 import ua.quiz.da.entity.UserEntity;
 import ua.quiz.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private UserDao userDao;
 
+    @Transactional(readOnly = true)
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserEntity userEntity = userDao.get(username);

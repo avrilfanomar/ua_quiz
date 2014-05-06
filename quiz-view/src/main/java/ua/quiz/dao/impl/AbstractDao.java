@@ -1,5 +1,6 @@
 package ua.quiz.dao.impl;
 
+import org.springframework.stereotype.Repository;
 import ua.quiz.dao.SimpleDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

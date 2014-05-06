@@ -1,7 +1,5 @@
 package ua.quiz.da.entity;
 
-import ua.quiz.CategoryType;
-
 import javax.persistence.*;
 
 /**
@@ -10,9 +8,9 @@ import javax.persistence.*;
 @Table(name = "\"answer\"")
 @Entity
 public class AnswerEntity {
-	private int id;
-	private int questionId;
-	private String answer;
+    private int id;
+    private QuestionEntity question;
+    private String answer;
 
     @Column(name = "id")
     @Id
@@ -24,14 +22,14 @@ public class AnswerEntity {
         this.id = id;
     }
 
-    @Column(name = "question_id", nullable = false)
-    @Basic
-    public int getQuestionId() {
-        return questionId;
+    @ManyToOne
+    @JoinColumn(name = "question_id", nullable = false)
+    public QuestionEntity getQuestion() {
+        return question;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setQuestion(QuestionEntity question) {
+        this.question = question;
     }
 
     @Column(name = "answer", nullable = false, length = 100)
@@ -52,8 +50,8 @@ public class AnswerEntity {
         AnswerEntity that = (AnswerEntity) o;
 
         if (id != that.id) return false;
-        if (questionId != that.questionId) return false;
         if (!answer.equals(that.answer)) return false;
+        if (!question.equals(that.question)) return false;
 
         return true;
     }
@@ -61,7 +59,7 @@ public class AnswerEntity {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + questionId;
+        result = 31 * result + question.hashCode();
         result = 31 * result + answer.hashCode();
         return result;
     }
